@@ -5,6 +5,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.entity.HopperBlockEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.Direction;
 import org.spongepowered.asm.mixin.Mixin;
@@ -32,10 +33,13 @@ public abstract class HopperBlockEntityMixin extends BlockEntity
         {
             Direction dir = state.get(FACING);
             int x = pos.getX() + dir.getOffsetX();
+            int y = pos.getY() + dir.getOffsetY();
             int z = pos.getZ() + dir.getOffsetZ();
-            ChunkPos selfPos = new ChunkPos((int) Math.floor(pos.getX() / 16), (int) Math.floor(pos.getZ() / 16));
-            ChunkPos facingPos = new ChunkPos((int) Math.floor(x / 16), (int) Math.floor(z / 16));
-            if (!selfPos.equals(facingPos))
+            BlockPos facingBlockPos = new BlockPos(x, y, z);
+            BlockState facingBlock = this.world.getBlockState(facingBlockPos);
+            ChunkPos selfPos = new ChunkPos(pos.getX() >> 4, pos.getZ() >> 4);
+            ChunkPos facingPos = new ChunkPos(x >> 4, z >> 4);
+            if (!selfPos.equals(facingPos) && facingBlock.isAir())
                 ((ServerWorld)world).getChunkManager().addTicket(ExtraTickets.HOPPER, facingPos, 2,facingPos);
         }
     }

@@ -2,6 +2,7 @@ package blackserver.morechunkloaders;
 
 import net.minecraft.server.world.ChunkTicketType;
 import net.minecraft.util.math.ChunkPos;
+import net.minecraft.world.chunk.Chunk;
 
 import java.util.Comparator;
 

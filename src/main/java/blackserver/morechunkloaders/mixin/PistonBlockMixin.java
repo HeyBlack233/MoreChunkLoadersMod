@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(PistonBlock.class)
 public class PistonBlockMixin
 {
-    @Inject(at = @At("TAIL"), method = "onSyncedBlockEvent")
+    @Inject(at = @At("HEAD"), method = "onSyncedBlockEvent")
     private void addTicket(BlockState state, World world, BlockPos pos, int type, int data, CallbackInfoReturnable<Boolean> cir)
     {
         if (world instanceof ServerWorld)
@@ -25,8 +25,13 @@ public class PistonBlockMixin
             Direction direction = state.get(FacingBlock.FACING);
             int x = pos.getX() + direction.getOffsetX();
             int z = pos.getZ() + direction.getOffsetZ();
-            ChunkPos chunkPos = new ChunkPos((int) Math.floor(x / 16), (int) Math.floor(z / 16));
-            ((ServerWorld)world).getChunkManager().addTicket(ExtraTickets.PISTON, chunkPos, 1, chunkPos);
+            ChunkPos basePos = new ChunkPos(pos.getX() >> 4, pos.getZ()>> 4 );
+            ChunkPos headPos = new ChunkPos(x >> 4, z >> 4);
+            if(!basePos.equals(headPos))
+            {
+                ((ServerWorld)world).getChunkManager().addTicket(ExtraTickets.PISTON, headPos, 1, headPos);
+                ((ServerWorld)world).getChunkManager().addTicket(ExtraTickets.PISTON, basePos, 1, basePos);
+            }
         }
     }
 }
