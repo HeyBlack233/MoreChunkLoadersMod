@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "morechunkloaders",
+  "version": "${version}",
+  "name": "MoreChunkLoadersMod",
+  "description": "add more chunk loading methods",
+  "authors": [
+    "HeyBlack"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "Main": [
+      "morechunkloaders.MoreChunkLoaders"
+    ]
+  },
+  "mixins": [
+    "MoreChunkLoaders.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.9",
+    "fabric": "*",
+    "minecraft": "1.16.5"
+  }
+}

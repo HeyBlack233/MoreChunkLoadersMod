@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "morechunkloaders.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "HopperBlockEntityMixin",
+    "PistonBlockMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
