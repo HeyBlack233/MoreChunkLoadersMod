@@ -1,5 +1,6 @@
-package blackserver.morechunkloaders.mixin;
+package morechunkloaders.mixin;
 
+import morechunkloaders.ExtraTickets;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
@@ -12,7 +13,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import blackserver.morechunkloaders.ExtraTickets;
 
 import static net.minecraft.block.HopperBlock.ENABLED;
 import static net.minecraft.block.HopperBlock.FACING;

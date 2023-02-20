@@ -1,6 +1,6 @@
-package blackserver.morechunkloaders.mixin;
+package morechunkloaders.mixin;
 
-import blackserver.morechunkloaders.ExtraTickets;
+import morechunkloaders.ExtraTickets;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FacingBlock;
 import net.minecraft.block.PistonBlock;
