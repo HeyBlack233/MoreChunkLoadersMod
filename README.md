@@ -12,7 +12,7 @@
 
 ## 活塞
 
-当活塞伸出或收回 (执行 `onSyncedBlockEvent()` 时)，在伸出的活塞头所在的区块添加一个 `piston` 加载票: 等级为32 持续4gt
+当活塞伸出或收回 (执行 `onSyncedBlockEvent()` 时)，在伸出的活塞头所在的区块添加一个 `piston` 加载票: 等级为32 持续6gt
 
 ## 漏斗
 
