@@ -12,8 +12,8 @@
   "icon": "assets/icon.png",
   "environment": "*",
   "entrypoints": {
-    "Main": [
-      "morechunkloaders.MoreChunkLoaders"
+    "main": [
+      "blackserver.morechunkloaders.MoreChunkLoaders"
     ]
   },
   "mixins": [
@@ -22,6 +22,6 @@
   "depends": {
     "fabricloader": ">=0.14.9",
     "fabric": "*",
-    "minecraft": "1.16.5"
+    "minecraft": "1.18.2"
   }
 }

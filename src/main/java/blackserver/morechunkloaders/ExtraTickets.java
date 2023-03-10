@@ -1,4 +1,4 @@
-package morechunkloaders;
+package blackserver.morechunkloaders;
 
 import net.minecraft.server.world.ChunkTicketType;
 import net.minecraft.util.math.ChunkPos;

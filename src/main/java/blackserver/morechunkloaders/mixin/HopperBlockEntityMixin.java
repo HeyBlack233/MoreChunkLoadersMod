@@ -1,6 +1,6 @@
-package morechunkloaders.mixin;
+package blackserver.morechunkloaders.mixin;
 
-import morechunkloaders.ExtraTickets;
+import blackserver.morechunkloaders.ExtraTickets;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
@@ -13,18 +13,16 @@ import net.minecraft.util.math.Direction;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import static net.minecraft.block.HopperBlock.ENABLED;
 import static net.minecraft.block.HopperBlock.FACING;
 
 @Mixin(HopperBlockEntity.class)
 public abstract class HopperBlockEntityMixin extends BlockEntity
 {
-    public HopperBlockEntityMixin(BlockEntityType<?> type)
+    public HopperBlockEntityMixin(BlockEntityType<?> type, BlockPos pos, BlockState state)
     {
-        super(type);
+        super(type, pos, state);
     }
 
     @Inject(at = @At("HEAD"), method = "getOutputInventory")

@@ -1,4 +1,4 @@
-package morechunkloaders;
+package blackserver.morechunkloaders;
 
 import net.fabricmc.api.ModInitializer;
 
