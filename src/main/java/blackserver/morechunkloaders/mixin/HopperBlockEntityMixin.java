@@ -13,8 +13,10 @@ import net.minecraft.util.math.Direction;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import static net.minecraft.block.HopperBlock.ENABLED;
 import static net.minecraft.block.HopperBlock.FACING;
 
 @Mixin(HopperBlockEntity.class)
@@ -25,11 +27,12 @@ public abstract class HopperBlockEntityMixin extends BlockEntity
         super(type, pos, state);
     }
 
-    @Inject(at = @At("HEAD"), method = "getOutputInventory")
-    private void addTicket(CallbackInfoReturnable<Inventory> cir)
+    @Inject(at = @At("HEAD"), method = "setTransferCooldown")
+    private void addTicket(int transferCooldown, CallbackInfo ci)
     {
-        BlockState state = this.world.getBlockState(pos);
-        if(world instanceof ServerWorld)
+        BlockState state = world.getBlockState(pos);
+
+        if(state.get(ENABLED) && world instanceof ServerWorld)
         {
             Direction dir = state.get(FACING);
             int x = pos.getX() + dir.getOffsetX();
