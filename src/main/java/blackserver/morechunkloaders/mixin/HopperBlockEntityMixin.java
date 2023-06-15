@@ -2,10 +2,10 @@ package blackserver.morechunkloaders.mixin;
 
 import blackserver.morechunkloaders.ExtraTickets;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.entity.HopperBlockEntity;
-import net.minecraft.inventory.Inventory;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
@@ -14,7 +14,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import static net.minecraft.block.HopperBlock.ENABLED;
 import static net.minecraft.block.HopperBlock.FACING;
@@ -32,7 +31,7 @@ public abstract class HopperBlockEntityMixin extends BlockEntity
     {
         BlockState state = world.getBlockState(pos);
 
-        if(state.get(ENABLED) && world instanceof ServerWorld)
+        if(state.isOf(Blocks.HOPPER) && state.get(ENABLED) && world instanceof ServerWorld)
         {
             Direction dir = state.get(FACING);
             int x = pos.getX() + dir.getOffsetX();

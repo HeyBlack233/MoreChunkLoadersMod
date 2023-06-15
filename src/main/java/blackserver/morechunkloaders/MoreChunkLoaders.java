@@ -7,6 +7,5 @@ public class MoreChunkLoaders implements ModInitializer
     @Override
     public void onInitialize()
     {
-
     }
 }
